@@ -5,10 +5,6 @@
 		<title></title>
 	</head>
 	<body>
-		<h1>Timetable</h1>	
-		<ul>
-			<li><a href="create.php">Neuer Monat erfassen</a></li>
-			<li><a href="shifts.php">Dienste erfassen</a></li>
-		</ul>
+
 	</body>
 </html>
