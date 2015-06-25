@@ -17,7 +17,7 @@ if ($_GET['do'] == "new") {
 		while (!feof($f) )
 		{
 			$line_of_text = fgetcsv($f, 1024);    
-			if ($delline != $line_of_text[0]) 
+			if ($_GET['delline'] != $line_of_text[0]) 
 			{
 				fputcsv($f, $line_of_text);
 			}
