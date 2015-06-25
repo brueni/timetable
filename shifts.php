@@ -10,6 +10,20 @@ if ($_GET['do'] == "new") {
 	$f = fopen("shifts.csv.default", "a");
 	fputcsv($f, $newline);
 	fclose($f);
+} elseif ($_GET['do'] == "del") {
+	if (isset($_GET['delline'])) {
+		$f = fopen("shifts.csv.default", "w+");
+		$myCsv = array();
+		while (!feof($f) )
+		{
+			$line_of_text = fgetcsv($file_handle, 1024);    
+			if ($id != $line_of_text[0]) 
+			{
+				fputcsv($f, $line_of_text);
+			}
+		}
+		fclose($f);
+	}
 }
 ?>
 
@@ -40,7 +54,7 @@ if ($_GET['do'] == "new") {
 				        foreach ($line as $cell) {
 				                echo "<td>" . htmlspecialchars($cell) . "</td>";
 				        }
-				        echo "<td><a href=\"?do=delete&line=" . $n . "\">L&ouml;schen</a></td></tr>\n";
+				        echo "<td><a href=\"?do=del&delline=" . $n . "\">L&ouml;schen</a></td></tr>\n";
 						$n++;
 				}
 				fclose($f);
