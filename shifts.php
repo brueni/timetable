@@ -16,7 +16,7 @@ if ($_GET['do'] == "new") {
 		$myCsv = array();
 		while (!feof($f) )
 		{
-			$line_of_text = fgetcsv($file_handle, 1024);    
+			$line_of_text = fgetcsv($f, 1024);    
 			if ($delline != $line_of_text[0]) 
 			{
 				fputcsv($f, $line_of_text);
