@@ -8,8 +8,10 @@
 				<h1>Monat <?php echo $_GET['y'] . "/" . $_GET['m']; ?> erfassen</h1>
 				<a href="create.php">Zur&uuml;ck</a>
 				<?php
-				$start_of_month = mktime(0, 0, 1, $m, 1, $y);
+				$start_of_month = mktime(0, 0, 1, $_GET['m'], 1, $_GET['y']);
 				$days_in_month = date(t, $start_of_month);
+				echo $start_of_month;
+				echo "<br>";
 				echo $days_in_month;
 				?>
 	</body>
