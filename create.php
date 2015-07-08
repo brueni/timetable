@@ -8,7 +8,7 @@
 				<h1>Neuer Monat erfassen</h1>
 				<a href="index.php">Zur&uuml;ck</a>
 				<?php
-				$month_now = date(m);
+				$month_now = date(n);
 				$month_plus1 = date(n) + 1;
 				$month_plus2 = date(n) + 2;
 				$year_now = date(Y);
