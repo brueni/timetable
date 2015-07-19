@@ -1,6 +1,18 @@
-<?php include 'include.php' ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-	"http://www.w3.org/TR/html4/strict.dtd">
+        "http://www.w3.org/TR/html4/strict.dtd">
+
+
+<?php include 'include.php';
+				//Get all possible shifts and put in array
+                                $n = "1";
+                                $f = fopen("shifts.csv.default", "r");
+                                while (($line = fgetcsv($f)) !== false) {
+                                        $shifts[] = $line[0];
+                                        $n++;
+                                }
+                                fclose($f);
+
+?>
 <html>
 	<head>
 		<title></title>
@@ -8,6 +20,9 @@
 	<body>
 				<h1>Monat <?php echo $_GET['y'] . "/" . $_GET['m']; ?> erfassen</h1>
 				<a href="create.php">Zur&uuml;ck</a>
+			<form action="create_result.php" method="POST">
+			<input type="hidden" name="year" value= <?php echo $_GET['y']; ?>>
+			<input type="hidden" name="month" value= <?php echo $_GET['m']; ?>>
 				<table border=1>
 					<tr>
 						<td>Datum</td>
@@ -24,14 +39,19 @@
 					echo "<tr>
 							<td>$i.</td>
 							<td>$weekday</td>
-							<td><select name=\"dienst_$i\">
-									<opton value=\"foo\">bar</option>
-								</select>
-							</td>
+							<td>";
+					$key=0;
+					foreach($shifts AS $shiftname) {
+						echo "<input type=\"radio\" name=\"tag-" . $i . "\" value=\"" . $key . "\">" . $shiftname . "</input><br>";
+						$key++;
+}
+					echo "		</td>
 						</tr>";
 					$i++;
 				}
 				?>
+				<tr><td colspan=3><input type="submit"></td></tr>
 				</table>
+			</form>
 	</body>
 </html>
