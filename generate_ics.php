@@ -8,10 +8,12 @@ $ics = "BEGIN:VCALENDAR" . $eol .
 if ($handle = opendir('data')) {
     while (false !== ($entry = readdir($handle))) {
         if($entry != "." && $entry != ".." && $entry != "shifts.ics") {
-        	$f = fopen($dir . $entry,"r");
-			$event = fread($f);
+        	$filename = $dir . $entry;
+        	$f = fopen($filename, "r");
+			$event = fread($f, filesize($filename));
 			echo $event;
         	$ics .= $event;
+			echo $ics;
 			fclose($f);
         }	
     }
