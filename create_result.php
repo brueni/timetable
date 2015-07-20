@@ -4,7 +4,7 @@
 
 <?php include 'include.php';
 function dateToCal($timestamp) {
-  return date('Ymd\Tgis\Z', $timestamp);
+  return date('Ymd\THis\Z', $timestamp);
 }
 
 function escapeString($string) {
@@ -38,7 +38,7 @@ function escapeString($string) {
 		echo "<br>";
 		echo $_POST['month'];
 		echo "<br>";
-		$year == $_POST['year'];
+		$year = $_POST['year'];
 		if (strlen($_POST['month'])=="1") {
 			$month = "0" . $_POST['month'];
 		} else {
@@ -58,8 +58,8 @@ function escapeString($string) {
 				$stophour2 = substr($stop1[$key],0,2);
 				$stopmin1 = substr($stop11[$key],-2);
 				//zweite halbzeit abfangen
-				$eol = "\r\n";
-				$id = "";
+				$eol = "PHP_EOL";
+				$id = md5($year . $month . $day . "1");
 				$start = $year . $month . $day . "T" . $starthour1 . $startmin1 . "00Z";
 				$end = $year . $month . $day . "T" . $stophour1 . $stopmin1 . "00Z";
 				$timestamp = dateToCal(time());
@@ -75,6 +75,9 @@ function escapeString($string) {
 			    "END:VEVENT";
 				echo $load;
 				echo "<br>";
+				$file1 = fopen("data/" . $year . $month . $day . "1", "w");
+				fwrite($file1, $load);
+				fclose($file1);
 				//evtl. nach description noch das rein "URL;VALUE=URI:" . htmlspecialchars($url) . $eol .
 				//echo "<br>";
 				//echo $shiftname[$key];
