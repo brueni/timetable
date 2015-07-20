@@ -73,6 +73,8 @@ function escapeString($string) {
 			    "DTSTART:" . $start . $eol .
 			    "DTEND:" . $end . $eol .
 			    "END:VEVENT";
+				echo $load;
+				echo "<br>";
 				//evtl. nach description noch das rein "URL;VALUE=URI:" . htmlspecialchars($url) . $eol .
 				//echo "<br>";
 				//echo $shiftname[$key];
