@@ -14,7 +14,9 @@ if ($handle = opendir('data')) {
 
     /* Das ist der korrekte Weg, ein Verzeichnis zu durchlaufen. */
     while (false !== ($entry = readdir($handle))) {
-        echo "$entry\n";
+        if($entry != "." OR $entry != "..") {
+        	echo "$entry\n";	
+        }	
     }
     closedir($handle);
 }
