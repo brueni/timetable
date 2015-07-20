@@ -72,7 +72,7 @@ function escapeString($string) {
 			    "SUMMARY:" . $description . $eol .
 			    "DTSTART:" . $start . $eol .
 			    "DTEND:" . $end . $eol .
-			    "END:VEVENT";
+			    "END:VEVENT" . $eol;
 				$file1 = fopen("data/" . $year . $month . $day2 . "-1.txt", "w");
 				fwrite($file1, $load1);
 				fclose($file1);
@@ -92,7 +92,7 @@ function escapeString($string) {
 				    "SUMMARY:" . $description . $eol .
 				    "DTSTART:" . $start2 . $eol .
 				    "DTEND:" . $end2 . $eol .
-				    "END:VEVENT";
+				    "END:VEVENT" . $eol;
 					$file2 = fopen("data/" . $year . $month . $day2 . "-2.txt", "w");
 					fwrite($file2, $load2);
 					fclose($file2);
