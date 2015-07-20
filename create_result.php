@@ -55,8 +55,8 @@ function escapeString($string) {
 				}
 				$starthour1 = substr($start1[$key],0,2);
 				$startmin1 = substr($start1[$key],-2);
-				$stophour2 = substr($stop1[$key],0,2);
-				$stopmin1 = substr($stop11[$key],-2);
+				$stophour1 = substr($stop1[$key],0,2);
+				$stopmin1 = substr($stop1[$key],-2);
 				//zweite halbzeit abfangen
 				$eol = "\n";
 				$id = md5($year . $month . $day . "1");
@@ -65,7 +65,7 @@ function escapeString($string) {
 				$timestamp = dateToCal(time());
 				$summary = $shiftname[$key];
 				$description = htmlspecialchars($shiftname[$key]);
-			    $load = "BEGIN:VEVENT" . $eol .
+			    $load1 = "BEGIN:VEVENT" . $eol .
 			    "UID:" . $id . $eol .
 			    "DTSTAMP:" . $timestamp . $eol .
 			    "DESCRIPTION:" . $description . $eol .
@@ -73,11 +73,30 @@ function escapeString($string) {
 			    "DTSTART:" . $start . $eol .
 			    "DTEND:" . $end . $eol .
 			    "END:VEVENT";
-				echo $load;
-				echo "<br>";
 				$file1 = fopen("data/" . $year . $month . $day2 . "-1.txt", "w");
-				fwrite($file1, $load);
+				fwrite($file1, $load1);
 				fclose($file1);
+				//zweites File nur wenn geteilter Dienst
+				if(isset($start2[$key])) {
+					$id2 = md5($year . $month . $day . "2");
+					$starthour2 = substr($start2[$key],0,2);
+					$startmin2 = substr($start2[$key],-2);
+					$stophour2 = substr($stop2[$key],0,2);
+					$stopmin2 = substr($stop2[$key],-2);
+					$start2 = $year . $month . $day . "T" . $starthour2 . $startmin2 . "00Z";
+					$end2 = $year . $month . $day . "T" . $stophour2 . $stopmin2 . "00Z";
+					$load2 = "BEGIN:VEVENT" . $eol .
+				    "UID:" . $id2 . $eol .
+				    "DTSTAMP:" . $timestamp . $eol .
+				    "DESCRIPTION:" . $description . $eol .
+				    "SUMMARY:" . $description . $eol .
+				    "DTSTART:" . $start2 . $eol .
+				    "DTEND:" . $end2 . $eol .
+				    "END:VEVENT";
+					$file2 = fopen("data/" . $year . $month . $day2 . "-2.txt", "w");
+					fwrite($file2, $load2);
+					fclose($file2);
+				}
 				//evtl. nach description noch das rein "URL;VALUE=URI:" . htmlspecialchars($url) . $eol .
 				//echo "<br>";
 				//echo $shiftname[$key];
