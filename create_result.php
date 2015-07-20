@@ -58,7 +58,7 @@ function escapeString($string) {
 				$stophour2 = substr($stop1[$key],0,2);
 				$stopmin1 = substr($stop11[$key],-2);
 				//zweite halbzeit abfangen
-				$eol = "PHP_EOL";
+				$eol = "\n";
 				$id = md5($year . $month . $day . "1");
 				$start = $year . $month . $day . "T" . $starthour1 . $startmin1 . "00Z";
 				$end = $year . $month . $day . "T" . $stophour1 . $stopmin1 . "00Z";
@@ -75,7 +75,7 @@ function escapeString($string) {
 			    "END:VEVENT";
 				echo $load;
 				echo "<br>";
-				$file1 = fopen("data/" . $year . $month . $day . "1", "w");
+				$file1 = fopen("data/" . $year . $month . $day2 . "-1.txt", "w");
 				fwrite($file1, $load);
 				fclose($file1);
 				//evtl. nach description noch das rein "URL;VALUE=URI:" . htmlspecialchars($url) . $eol .
