@@ -10,6 +10,7 @@ if ($handle = opendir('data')) {
         if($entry != "." && $entry != ".." && $entry != "shifts.ics") {
         	$f = fopen($dir . $entry,"r");
 			$event = fread($f);
+			echo $event;
         	$ics .= $event;
 			fclose($f);
         }	
