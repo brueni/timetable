@@ -1,14 +1,17 @@
 <?php include 'include.php';
 $dir="data/";
-$ics = "BEGIN:VCALENDAR\n
-VERSION:2.0\n
-PRODID:-//MichaelBruenisholz//Timetable//EN\n";
-
+$eol = "\n";
+$ics = "BEGIN:VCALENDAR" . $eol . 
+"VERSION:2.0" . $eol . 
+"PRODID:-//MichaelBruenisholz//Timetable//EN" . $eol;
 
 if ($handle = opendir('data')) {
     while (false !== ($entry = readdir($handle))) {
         if($entry != "." && $entry != ".." && $entry != "shifts.ics") {
-        	$ics .= readfile($dir . $entry);	
+        	$f = fopen($dir . $entry,"r");
+			$event = fread($f);
+        	$ics .= $event;
+			fclose($f)	
         }	
     }
     closedir($handle);
