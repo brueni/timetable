@@ -2,7 +2,7 @@
 $dir="data/";
 $ics = "BEGIN:VCALENDAR\n
 VERSION:2.0\n
-PRODID:-//Michael Bruenisholz//Timetable//EN\n";
+PRODID:-//MichaelBruenisholz//Timetable//EN\n";
 
 
 if ($handle = opendir('data')) {
