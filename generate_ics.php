@@ -7,7 +7,7 @@ PRODID:-//Michael Bruenisholz//Timetable//EN\n";
 
 if ($handle = opendir('data')) {
     while (false !== ($entry = readdir($handle))) {
-        if($entry != "." && $entry != "..") {
+        if($entry != "." && $entry != ".." && $entry != "shifts.ics") {
         	$ics .= readfile($dir . $entry);	
         }	
     }
@@ -16,6 +16,6 @@ if ($handle = opendir('data')) {
 $ics .= "END:VCALENDAR";
 
 $file = fopen("data/shifts.ics", "w");
-fwrite($file, $ics);
+fwrite($file,$ics);
 close($file);
 ?>
