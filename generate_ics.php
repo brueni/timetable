@@ -11,7 +11,7 @@ if ($handle = opendir('data')) {
         	$f = fopen($dir . $entry,"r");
 			$event = fread($f);
         	$ics .= $event;
-			fclose($f)	
+			fclose($f);
         }	
     }
     closedir($handle);
