@@ -1,4 +1,5 @@
 <?php include 'include.php';
+include 'login.php';
 $dir="data/";
 $eol = "\n";
 $ics = "BEGIN:VCALENDAR" . $eol . 
@@ -11,17 +12,30 @@ if ($handle = opendir('data')) {
         	$filename = $dir . $entry;
         	$f = fopen($filename, "r");
 			$event = fread($f, filesize($filename));
-			echo $event;
+			//echo $event;
         	$ics .= $event;
-			echo $ics;
+			//echo $ics;
 			fclose($f);
-        }	
+        }
     }
     closedir($handle);
 }
 $ics .= "END:VCALENDAR";
-
 $file = fopen("data/shifts.ics", "w");
 fwrite($file,$ics);
-close($file);
+fclose($file);
+//FTP Upload
+$localfile="data/shifts.ics";
+$remotefile="/public_html/timetable/shifts.ics";
+$conn_id = ftp_connect($ftpserver);
+$login_result = ftp_login($conn_id, $ftpuser, $ftppw);
+ftp_pasv($conn_id, true);
+if (ftp_put($conn_id, $remotefile, $localfile, FTP_ASCII)) {
+ echo "$localfile erfolgreich hochgeladen\n";
+} else {
+ echo "Ein Fehler trat beim Hochladen von $localfile auf\n";
+}
+
+// Verbindung schließen
+ftp_close($conn_id);
 ?>
