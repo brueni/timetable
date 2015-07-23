@@ -88,8 +88,6 @@ function escapeString($string) {
 						$endday = $day2;
 					}
 					$startstr2 = $year . $month . $day2 . "T" . $starthour2 . $startmin2 . "00";
-					echo "starthour2: " . $starthour2 . "<br>";
-					echo "startmin2: " . $startmin2 . "<br>";
 					$endstr2 = $year . $month . $endday . "T" . $stophour2 . $stopmin2 . "00";
 					$load2 = "BEGIN:VEVENT" . $eol .
 				    "UID:" . $id2 . $eol .
