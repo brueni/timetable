@@ -76,7 +76,7 @@ function escapeString($string) {
 				fwrite($file1, $load1);
 				fclose($file1);
 				//zweites File nur wenn geteilter Dienst
-				if(isset($start2[$key])) {
+				if($start2[$key] != '') {
 					$id2 = md5($year . $month . $day . "2");
 					$starthour2 = substr($start2[$key],0,2);
 					$startmin2 = substr($start2[$key],-2);
