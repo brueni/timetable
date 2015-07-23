@@ -102,7 +102,7 @@ function escapeString($string) {
 					$file2 = fopen("data/" . $year . $month . $day2 . "-2.txt", "w");
 					fwrite($file2, $load2);
 					fclose($file2);
-					unset($start2[$key])M
+					unset($start2[$key]);
 				}
 			}
 			$day++;
