@@ -59,8 +59,8 @@ function escapeString($string) {
 				} else {
 					$endday = $day2;
 				}
-				$start = $year . $month . $day2 . "T" . $starthour1 . $startmin1 . "00";
-				$end = $year . $month . $endday . "T" . $stophour1 . $stopmin1 . "00";
+				$startstr = $year . $month . $day2 . "T" . $starthour1 . $startmin1 . "00";
+				$endstr = $year . $month . $endday . "T" . $stophour1 . $stopmin1 . "00";
 				$timestamp = dateToCal(time());
 				$summary = $shiftname[$key];
 				$description = htmlspecialchars($shiftname[$key]);
@@ -69,8 +69,8 @@ function escapeString($string) {
 			    "DTSTAMP:" . $timestamp . $eol .
 			    "DESCRIPTION:" . $description . $eol .
 			    "SUMMARY:" . $description . $eol .
-			    "DTSTART;TZID=Europe/Zurich:" . $start . $eol .
-			    "DTEND;TZID=Europe/Zurich:" . $end . $eol .
+			    "DTSTART;TZID=Europe/Zurich:" . $startstr . $eol .
+			    "DTEND;TZID=Europe/Zurich:" . $endstr . $eol .
 			    "END:VEVENT" . $eol;
 				$file1 = fopen("data/" . $year . $month . $day2 . "-1.txt", "w");
 				fwrite($file1, $load1);
@@ -87,17 +87,17 @@ function escapeString($string) {
 					} else {
 						$endday = $day2;
 					}
-					$start2 = $year . $month . $day2 . "T" . $starthour2 . $startmin2 . "00";
+					$startstr2 = $year . $month . $day2 . "T" . $starthour2 . $startmin2 . "00";
 					echo "starthour2: " . $starthour2 . "<br>";
 					echo "startmin2: " . $startmin2 . "<br>";
-					$end2 = $year . $month . $endday . "T" . $stophour2 . $stopmin2 . "00";
+					$endstr2 = $year . $month . $endday . "T" . $stophour2 . $stopmin2 . "00";
 					$load2 = "BEGIN:VEVENT" . $eol .
 				    "UID:" . $id2 . $eol .
 				    "DTSTAMP:" . $timestamp . $eol .
 				    "DESCRIPTION:" . $description . $eol .
 				    "SUMMARY:" . $description . $eol .
-				    "DTSTART;TZID=Europe/Zurich:" . $start2 . $eol .
-				    "DTEND;TZID=Europe/Zurich:" . $end2 . $eol .
+				    "DTSTART;TZID=Europe/Zurich:" . $startstr2 . $eol .
+				    "DTEND;TZID=Europe/Zurich:" . $endstr2 . $eol .
 				    "END:VEVENT" . $eol;
 					$file2 = fopen("data/" . $year . $month . $day2 . "-2.txt", "w");
 					fwrite($file2, $load2);
