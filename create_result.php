@@ -30,14 +30,8 @@ function escapeString($string) {
                 <title></title>
         </head>
         <body>
-		<?php var_dump($_POST); ?>
-		<br><br>
 		<?php
 		$eol = "\r\n";
-		echo $_POST['year'];
-		echo "<br>";
-		echo $_POST['month'];
-		echo "<br>";
 		$year = $_POST['year'];
 		if (strlen($_POST['month'])=="1") {
 			$month = "0" . $_POST['month'];
@@ -107,14 +101,11 @@ function escapeString($string) {
 					fwrite($file2, $load2);
 					fclose($file2);
 				}
-				//evtl. nach description noch das rein "URL;VALUE=URI:" . htmlspecialchars($url) . $eol .
-				//echo "<br>";
-				//echo $shiftname[$key];
-				//echo $start2[$key];
-				//echo "<br>";
 			}
 			$day++;
 		}
 		?>
+		Hier kommt noch eine &Uuml;bersicht, welche Dienste vorhanden sind.
+		<a href="generate_ics.php">Dienste hochladen</a>
 	</body>
 </html>
