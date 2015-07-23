@@ -60,8 +60,13 @@ function escapeString($string) {
 				//zweite halbzeit abfangen
 				$eol = "\n";
 				$id = md5($year . $month . $day . "1");
-				$start = $year . $month . $day . "T" . $starthour1 . $startmin1 . "00Z";
-				$end = $year . $month . $day . "T" . $stophour1 . $stopmin1 . "00Z";
+				if ($stophour1 < $starthour1) {
+					$endday = $day2 + 1;
+				} else {
+					$endday = $day2;
+				}
+				$start = $year . $month . $day2 . "T" . $starthour1 . $startmin1 . "00Z";
+				$end = $year . $month . $endday . "T" . $stophour1 . $stopmin1 . "00Z";
 				$timestamp = dateToCal(time());
 				$summary = $shiftname[$key];
 				$description = htmlspecialchars($shiftname[$key]);
@@ -83,8 +88,13 @@ function escapeString($string) {
 					$startmin2 = substr($start2[$key],-2);
 					$stophour2 = substr($stop2[$key],0,2);
 					$stopmin2 = substr($stop2[$key],-2);
-					$start2 = $year . $month . $day . "T" . $starthour2 . $startmin2 . "00Z";
-					$end2 = $year . $month . $day . "T" . $stophour2 . $stopmin2 . "00Z";
+					if ($stophour2 < $starthour2) {
+						$endday = $day2 + 1;
+					} else {
+						$endday = $day2;
+					}
+					$start2 = $year . $month . $day2 . "T" . $starthour2 . $startmin2 . "00Z";
+					$end2 = $year . $month . $endday . "T" . $stophour2 . $stopmin2 . "00Z";
 					$load2 = "BEGIN:VEVENT" . $eol .
 				    "UID:" . $id2 . $eol .
 				    "DTSTAMP:" . $timestamp . $eol .
