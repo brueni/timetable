@@ -89,6 +89,7 @@ function escapeString($string) {
 					}
 					$start2 = $year . $month . $day2 . "T" . $starthour2 . $startmin2 . "00";
 					$end2 = $year . $month . $endday . "T" . $stophour2 . $stopmin2 . "00";
+					echo "stophour2: " . $stophour2 . "<br>";
 					$load2 = "BEGIN:VEVENT" . $eol .
 				    "UID:" . $id2 . $eol .
 				    "DTSTAMP:" . $timestamp . $eol .
