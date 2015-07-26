@@ -25,11 +25,15 @@
 			<input type="hidden" name="year" value= <?php echo $_GET['y']; ?>>
 			<input type="hidden" name="month" value= <?php echo $_GET['m']; ?>>
 				<table border=1>
-					<!--<tr>
-						<td>Datum</td>
-						<td>Wochentag</td>
-						<td>Dienst</td>
-					</tr>-->
+					<tr>
+						<th>Mo</th>
+						<th>Di</th>
+						<th>Mi</th>
+						<th>Do</th>
+						<th>Fr</th>
+						<th>Sa</th>
+						<th>So</th>
+					</tr>
 				<?php
 				$start_of_month = mktime(0, 0, 1, $_GET['m'], 1, $_GET['y']);
 				$days_in_month = date(t, $start_of_month);
@@ -46,7 +50,7 @@
 					$weekday = date('D', mktime(0,0,1,$_GET['m'], $i, $_GET['y']));
 					$weekday_nr = date('N', mktime(0,0,1,$_GET['m'], $i, $_GET['y']));
 					$weekday = strtr($weekday, $trans);
-					echo "<td>$i<br>
+					echo "<td><b>$i.</b><br>
 							$weekday<br>";
 					$key=0;
 					foreach($shifts AS $shiftname) {
@@ -62,7 +66,7 @@
 				}
 				echo "</tr>";
 				?>
-				<tr><td colspan=3><input type="submit"></td></tr>
+				<tr><td colspan=3><input type="submit" value="Eintragen"></td></tr>
 				</table>
 			</form>
 	</body>
