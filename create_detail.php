@@ -50,8 +50,7 @@
 					$weekday = date('D', mktime(0,0,1,$_GET['m'], $i, $_GET['y']));
 					$weekday_nr = date('N', mktime(0,0,1,$_GET['m'], $i, $_GET['y']));
 					$weekday = strtr($weekday, $trans);
-					echo "<td><b>$i.</b><br>
-							$weekday<br>";
+					echo "<td><b>$i.</b><br>";
 					$key=0;
 					foreach($shifts AS $shiftname) {
 						echo "<input type=\"radio\" name=\"tag-" . $i . "\" value=\"" . $key . "\">" . $shiftname . "</input><br>";
