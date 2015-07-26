@@ -125,8 +125,27 @@ function escapeString($string) {
 			}
 			$day++;
 		}
+		//Zeige alle Dienste
+		echo "Folgende Dienste sind momentan vorhanden:<br>";
+		$dir = "data";
+		$files = scandir($dir);
+		foreach($files AS $filename) {
+			if ($filename != "." && $filename != ".." && $filename != "shifts.ics") {
+				if (substr($filename,-5,1) != "2") { //Nur erstes Teil-File pro Dienst zeigen
+					$year = substr($filename,0,4);
+					$month = substr($filename,4,2);
+					$day = substr($filename,6,2);
+					$lines = file("data/" . $filename);
+					$shift = substr($lines[3],12);
+					if($month != $month_last) {
+						echo "<b>" . $year . "/" . $month . "</b><br>";
+						$month_last = $month;
+					}
+					echo $day . "." . $month . "." . $year . ":&nbsp;" . $shift . "<br>";
+				}
+			}
+		}
 		?>
-		Hier kommt noch eine &Uuml;bersicht, welche Dienste vorhanden sind.
 		<a href="generate_ics.php">Dienste hochladen</a>
 	</body>
 </html>
