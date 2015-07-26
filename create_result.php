@@ -47,8 +47,8 @@ function escapeString($string) {
 					} else {
 						$day2 = $day;
 					}
-					$file1 = $year . $month . day2 . "-1.txt";
-					$file2 = $year . $month . day2 . "-2.txt";
+					$file1 = "data/" . $year . $month . day2 . "-1.txt";
+					$file2 = "data/" . $year . $month . day2 . "-2.txt";
 					if (file_exists($file1)) {
 						unlink($file1);
 					}
