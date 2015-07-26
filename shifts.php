@@ -7,12 +7,12 @@ if ($_GET['do'] == "new") {
 		$_GET['start2'],
 		$_GET['end2']
 	);
-	$f = fopen("shifts.csv.default", "a");
+	$f = fopen("shifts.csv", "a");
 	fputcsv($f, $newline);
 	fclose($f);
-} /*lseif ($_GET['do'] == "del") {
+} /*lseif ($_GET['do'] == "del") { //Delete doesnt work as expected, postponing to later release
 	if (isset($_GET['delline'])) {
-		$f = fopen("shifts.csv.default", "w+");
+		$f = fopen("shifts.csv", "w+");
 		$myCsv = array();
 		while (!feof($f) )
 		{
@@ -49,7 +49,7 @@ if ($_GET['do'] == "new") {
 			</tr>
 			<?php
 				$n = "1";
-				$f = fopen("shifts.csv.default", "r");
+				$f = fopen("shifts.csv", "r");
 				while (($line = fgetcsv($f)) !== false) {
 				        echo "<tr><td>$n</td>";
 				        foreach ($line as $cell) {

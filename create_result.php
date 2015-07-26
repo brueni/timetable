@@ -13,7 +13,7 @@ function escapeString($string) {
 
 	//Get all possible shifts and put in array
 	$n = "1";
-	$f = fopen("shifts.csv.default", "r");
+	$f = fopen("shifts.csv", "r");
 	while (($line = fgetcsv($f)) !== false) {
 		$shiftname[] = $line[0];
 		$start1[] = $line[1];

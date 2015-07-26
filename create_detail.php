@@ -5,7 +5,7 @@
 <?php include 'include.php';
 				//Get all possible shifts and put in array
                                 $n = "1";
-                                $f = fopen("shifts.csv.default", "r");
+                                $f = fopen("shifts.csv", "r");
                                 while (($line = fgetcsv($f)) !== false) {
                                         $shifts[] = $line[0];
                                         $n++;
