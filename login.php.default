@@ -1,0 +1,5 @@
+<?php
+$ftpserver="SERVERURL";
+$ftpuser="USER";
+$ftppw="PW";
+?>
