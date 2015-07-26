@@ -34,7 +34,14 @@
 				$start_of_month = mktime(0, 0, 1, $_GET['m'], 1, $_GET['y']);
 				$days_in_month = date(t, $start_of_month);
 				$i = "1";
-				echo "<tr>";
+				$weekday_first = date('N', mktime(0,0,1,$_GET['m'], 1, $_GET['y']));
+				if ($weekday_first == "1") {
+					echo "<tr>";	
+				} else {
+					$colspan = $weekday_first - 1;
+					echo "<tr><td colspan=\"" . $colspan . "\">&nbsp;</td>";
+				}
+				
 				while ($i <= $days_in_month) {
 					$weekday = date('D', mktime(0,0,1,$_GET['m'], $i, $_GET['y']));
 					$weekday_nr = date('N', mktime(0,0,1,$_GET['m'], $i, $_GET['y']));
