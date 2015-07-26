@@ -44,7 +44,8 @@
 					foreach($shifts AS $shiftname) {
 						echo "<input type=\"radio\" name=\"tag-" . $i . "\" value=\"" . $key . "\">" . $shiftname . "</input><br>";
 						$key++;
-}
+					}
+					echo "<input type=\"radio\" name=\"tag-" . $i . "\" value=\"free\">Frei</input><br>";
 					echo "		</td>
 						</tr>";
 					$i++;
