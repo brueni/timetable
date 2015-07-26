@@ -92,7 +92,7 @@ function escapeString($string) {
 					fclose($file1);
 					//zweites File nur wenn geteilter Dienst, ansonsten loeschen
 					if($start2[$key] == '') {
-						$file2 = fopen("data/" . $year . $month . $day2 . "-2.txt", "w");
+						$file2 = "data/" . $year . $month . $day2 . "-2.txt";
 						if (file_exists($file2)) {
 							unlink($file2);
 						}
