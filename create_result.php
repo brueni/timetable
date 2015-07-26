@@ -47,8 +47,8 @@ function escapeString($string) {
 					} else {
 						$day2 = $day;
 					}
-					$file1 = "data/" . $year . $month . day2 . "-1.txt";
-					$file2 = "data/" . $year . $month . day2 . "-2.txt";
+					$file1 = "data/" . $year . $month . $day2 . "-1.txt";
+					$file2 = "data/" . $year . $month . $day2 . "-2.txt";
 					if (file_exists($file1)) {
 						unlink($file1);
 					}
@@ -90,8 +90,13 @@ function escapeString($string) {
 					$file1 = fopen("data/" . $year . $month . $day2 . "-1.txt", "w");
 					fwrite($file1, $load1);
 					fclose($file1);
-					//zweites File nur wenn geteilter Dienst
-					if($start2[$key] != '') {
+					//zweites File nur wenn geteilter Dienst, ansonsten loeschen
+					if($start2[$key] == '') {
+						$file2 = fopen("data/" . $year . $month . $day2 . "-2.txt", "w");
+						if (file_exists($file2)) {
+							unlink($file2);
+						}
+					} else {
 						$id2 = md5($year . $month . $day . "2");
 						$starthour2 = substr($start2[$key],0,2);
 						$startmin2 = substr($start2[$key],-2);
