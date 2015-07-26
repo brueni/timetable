@@ -31,6 +31,7 @@ function escapeString($string) {
                 <title>Timetable</title>
         </head>
         <body>
+        	<h1>Dienste erzeugt</h1>	
 		<?php
 		$eol = "\r\n";
 		$year = $_POST['year'];

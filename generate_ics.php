@@ -7,6 +7,7 @@
                 <title>Timetable</title>
         </head>
         <body>
+        	<h1>Kalenderupload</h1>	
 <?php include 'include.php';
 include 'login.php';
 $dir="data/";
