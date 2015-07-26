@@ -42,7 +42,19 @@ function escapeString($string) {
 		while ($day <= '31') {
 			if(isset($_POST['tag-' . $day])) {
 				if($_POST['tag-' . $day] == 'free') {
-					echo $day . "ist frei";
+					if (strlen($day)=="1") {
+						$day2 = "0" . $day;
+					} else {
+						$day2 = $day;
+					}
+					$file1 = $year . $month . day2 . "-1.txt";
+					$file2 = $year . $month . day2 . "-2.txt";
+					if (file_exists($file1)) {
+						unlink($file1);
+					}
+					if (file_exists($file2)) {
+						unlink($file2);
+					}
 				} else {
 					$key = $_POST['tag-' . $day];
 					if (strlen($day)=="1") {
