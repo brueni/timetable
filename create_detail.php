@@ -25,32 +25,35 @@
 			<input type="hidden" name="year" value= <?php echo $_GET['y']; ?>>
 			<input type="hidden" name="month" value= <?php echo $_GET['m']; ?>>
 				<table border=1>
-					<tr>
+					<!--<tr>
 						<td>Datum</td>
 						<td>Wochentag</td>
 						<td>Dienst</td>
-					</tr>
+					</tr>-->
 				<?php
 				$start_of_month = mktime(0, 0, 1, $_GET['m'], 1, $_GET['y']);
 				$days_in_month = date(t, $start_of_month);
 				$i = "1";
+				echo "<tr>";
 				while ($i <= $days_in_month) {
 					$weekday = date('D', mktime(0,0,1,$_GET['m'], $i, $_GET['y']));
+					$weekday_nr = date('N', mktime(0,0,1,$_GET['m'], $i, $_GET['y']));
 					$weekday = strtr($weekday, $trans);
-					echo "<tr>
-							<td>$i.</td>
-							<td>$weekday</td>
-							<td>";
+					echo "<td>$i<br>
+							$weekday<br>";
 					$key=0;
 					foreach($shifts AS $shiftname) {
 						echo "<input type=\"radio\" name=\"tag-" . $i . "\" value=\"" . $key . "\">" . $shiftname . "</input><br>";
 						$key++;
 					}
 					echo "<input type=\"radio\" name=\"tag-" . $i . "\" value=\"free\">Frei</input><br>";
-					echo "		</td>
-						</tr>";
+					echo "		</td>";
+					if ($weekday_nr == "7") {
+						echo "</tr><tr>";
+					}
 					$i++;
 				}
+				echo "</tr>";
 				?>
 				<tr><td colspan=3><input type="submit"></td></tr>
 				</table>
