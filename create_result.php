@@ -27,7 +27,8 @@ function escapeString($string) {
 
 <html>
         <head>
-                <title></title>
+        		<link rel="stylesheet" type="text/css" href="default.css">
+                <title>Timetable</title>
         </head>
         <body>
 		<?php

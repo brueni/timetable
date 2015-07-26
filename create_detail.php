@@ -15,7 +15,8 @@
 ?>
 <html>
 	<head>
-		<title></title>
+		<link rel="stylesheet" type="text/css" href="default.css">
+		<title>Timetable</title>
 	</head>
 	<body>
 				<h1>Monat <?php echo $_GET['y'] . "/" . $_GET['m']; ?> erfassen</h1>

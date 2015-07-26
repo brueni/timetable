@@ -1,3 +1,12 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+        <head>
+        		<link rel="stylesheet" type="text/css" href="default.css">
+                <title>Timetable</title>
+        </head>
+        <body>
 <?php include 'include.php';
 include 'login.php';
 $dir="data/";
@@ -48,11 +57,13 @@ $conn_id = ftp_connect($ftpserver);
 $login_result = ftp_login($conn_id, $ftpuser, $ftppw);
 ftp_pasv($conn_id, true);
 if (ftp_put($conn_id, $remotefile, $localfile, FTP_ASCII)) {
- echo "$localfile erfolgreich hochgeladen\n";
+ echo "$localfile erfolgreich hochgeladen<br>";
 } else {
- echo "Ein Fehler trat beim Hochladen von $localfile auf\n";
+ echo "Ein Fehler trat beim Hochladen von $localfile auf<br>";
 }
 
 // Verbindung schließen
 ftp_close($conn_id);
 ?>
+<a href="index.php">Zur&uuml;ck zur Startseite</a>
+</body></html>

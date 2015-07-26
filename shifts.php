@@ -31,7 +31,8 @@ if ($_GET['do'] == "new") {
 	"http://www.w3.org/TR/html4/strict.dtd">
 <html>
 	<head>
-		<title></title>
+		<link rel="stylesheet" type="text/css" href="default.css">
+		<title>Timetable</title>
 	</head>
 	<body>
 				<h1>M&ouml;gliche Schichten</h1>
