@@ -1,3 +1,32 @@
 body {
-	background-color: #ff0000;
+	font-family: sans-serif;
+	background-color: #ccdee4;
+}
+h1 {
+	padding: 10px;
+	background-color: #69d2e7;
+	color: #191919;
+}
+
+a:link {
+	color: #190000;
+}
+a:visited {
+	color: #191919;
+}
+a:active {
+	color: #fa6900;
+}
+a:hover {
+	color: #fa6900;
+}
+table {
+	border-width: 0px;
+}
+
+td {
+	border-width: 0px;
+	background-color: #a7dbdb;
+	padding: 5px;
+	color: #191919;
 }
